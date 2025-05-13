@@ -1,4 +1,4 @@
-export const FOODS = {
+const FOODS = {
   fish: { name: "Fish", value: 20, image: "../assets/food/fish.png" },
   egg: { name: "Egg", value: 20, image: "../assets/food/egg.png" },
   candy: { name: "Candy", value: 20, image: "../assets/food/candy.png" },
@@ -6,7 +6,7 @@ export const FOODS = {
   bread: { name: "Bread", value: 20, image: "../assets/food/bread.png" },
 };
 
-export const TOYS = {
+const TOYS = {
   balloon: { name: "Balloon", value: 20, image: "../assets/toy/balloon.png" },
   slinky: { name: "Slinky", value: 20, image: "../assets/toy/slinky.png" },
   paddleBall: { name: "Paddle Ball", value: 20, image: "../assets/toy/paddleball.png" },
@@ -14,7 +14,7 @@ export const TOYS = {
   musicBox: { name: "Music Box", value: 20, image: "../assets/toy/music_box.png" },
 };
 
-export const PETS = {
+const PETS = {
   daisy: {
     name: "Daisy",
     description: "Friendly but a little dumb.",

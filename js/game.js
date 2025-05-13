@@ -1,5 +1,3 @@
-import { PETS } from "./items.js";
-
 // Game state
 let gameState = {
   selectedPet: null,
@@ -19,7 +17,6 @@ let gameState = {
 // DOM Elements
 const selectionScreen = document.getElementById("selectionScreen");
 const petOptions = document.querySelectorAll(".pet-option");
-const selectButtons = document.querySelectorAll(".select-btn");
 const gameScreen = document.getElementById("gameScreen");
 const petDescription = document.getElementById("petDescription");
 const hungerMeter = document.getElementById("hungerMeter");
@@ -291,7 +288,7 @@ function winGame() {
 
   // Show win message
   setTimeout(() => {
-    modalTitle.textContent = "You Win! 🎉";
+    modalTitle.textContent = "Your pet is all grown up! You Win! 🎉";
     gameOverModal.style.display = "flex";
     document.querySelector(".keepPlaying-btn").style.display = "block";
   }, 5000);
