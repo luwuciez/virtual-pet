@@ -1,0 +1,98 @@
+# Include your project__specific ignores in this file
+# Read about how to use .gitignore: https://help.github.com/articles/ignoring__files
+# Useful .gitignore templates: https://github.com/github/gitignore
+
+# ignore all files starting with . or ~
+.*
+~*
+
+# ignore node/grunt dependency directories
+node__modules/
+
+# Ignore build directories.
+/build
+/dist
+
+# ignore composer vendor directory
+/vendor
+
+# ignore components loaded via Bower
+/bower__components
+
+# ignore jekyll build directory
+/__site
+
+# ignore OS generated files
+ehthumbs.db
+Thumbs.db
+
+# ignore Editor files
+*.sublime__project
+*.sublime__workspace
+*.komodoproject
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# ignore compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# ignore private/secret files
+*.der
+*.key
+*.pem
+
+# ________________________________________________________________________________________________________________
+# BEGIN Explictly Allowed Files (i.e. do NOT ignore these)
+# ________________________________________________________________________________________________________________
+
+# track these files, if they exist
+!.editorconfig
+!.env.example
+!.git__blame__ignore__revs
+!.gitignore
+!.nvmrc
+!.phpcs.xml.dist
+
+
+# ________________________________________________________________________________________________________________
+# ignore Specific personal project files
+# ________________________________________________________________________________________________________________
+
+# local history (Visual Code extension)
+.history
+css/message.css
+
+# Pinegl-row-span
+__pginfo
+__pgbackup
+pinegl-row-span.json
+
+# PhotoLine
+.pldbak
+
+# cache folder(s)/directories
+/cache
+
+# Blender
+*.blend1
+
+.css_grid_example\css_grid_example
+.css_grid_example
