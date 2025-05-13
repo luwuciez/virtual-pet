@@ -362,6 +362,10 @@ function setupEventListeners() {
 
   // Setup click events for items
   setupItemClicks();
+
+  // Game over modal buttons
+  document.getElementById("keepPlayingBtn").addEventListener("click", keepPlaying);
+  document.getElementById("startOverBtn").addEventListener("click", startOver);
 }
 
 // Setup click interactions for items
