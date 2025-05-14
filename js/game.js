@@ -279,6 +279,7 @@ function petDied() {
     modalTitle.textContent = `${PETS[gameState.selectedPet].name} has died!`;
     pauseModal.style.display = "flex";
   }, 1000);
+  document.getElementById("resumeBtn").style.display = "none";
 }
 
 // Player won the game
@@ -400,10 +401,10 @@ function setupEventListeners() {
   // Setup click events for items
   setupItemClicks();
 
+  // Pause game on spacebar press
   document.addEventListener("keydown", (e) => {
     if (e.code === "Space" && gameScreen.style.display === "flex") {
-      e.preventDefault();
-      console.log("clicked"); // Prevent page scrolling
+      e.preventDefault(); // Prevent page scrolling
       if (!gameState.isPaused) {
         pauseGame();
       }
