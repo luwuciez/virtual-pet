@@ -1,108 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Virtual Pet Game</title>
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <div class="container">
-      <!-- Selection Screen -->
-      <div class="selection-screen" id="selectionScreen">
-        <h1 class="selection-header">Choose your starter pet!</h1>
-        <div class="pet-description" id="petDescription">Hover over a pet to see its details</div>
-        <div class="pet-options">
-          <div class="pet-option" data-pet="daisy">
-            <div class="pet-img">
-              <img src="assets/daisy/stage1a.png" alt="Daisy" />
-            </div>
-            <div class="pet-name">Daisy</div>
-            <button class="select-btn">Select</button>
-          </div>
-          <div class="pet-option" data-pet="spike">
-            <div class="pet-img">
-              <img src="assets/spike/stage1a.png" alt="Spike" />
-            </div>
-            <div class="pet-name">Spike</div>
-            <button class="select-btn">Select</button>
-          </div>
-          <div class="pet-option" data-pet="lily">
-            <div class="pet-img">
-              <img src="assets/lily/stage1a.png" alt="Lily" />
-            </div>
-            <div class="pet-name">Lily</div>
-            <button class="select-btn">Select</button>
-          </div>
-        </div>
-      </div>
 
-      <!-- Game Screen -->
-      <div class="game-screen" id="gameScreen">
-        <div class="meters">
-          <div class="meter">
-            <div class="meter-label">
-              <span>Hunger meter</span>
-              <span id="hungerValue">100</span>
-            </div>
-            <div class="meter-bar">
-              <div class="meter-fill hunger-fill" id="hungerMeter" style="width: 100%"></div>
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virtual Pet Game</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- Selection Screen -->
+    <div class="selection-screen" id="selectionScreen">
+      <h1 class="selection-header">Choose your starter pet!</h1>
+      <div class="pet-description" id="petDescription">Hover over a pet to see its details</div>
+      <div class="pet-options">
+        <div class="pet-option" data-pet="daisy">
+          <div class="pet-img">
+            <img src="assets/daisy/stage1a.png" alt="Daisy" />
           </div>
-          <div class="meter">
-            <div class="meter-label">
-              <span>Happiness meter</span>
-              <span id="happinessValue">100</span>
-            </div>
-            <div class="meter-bar">
-              <div class="meter-fill happiness-fill" id="happinessMeter" style="width: 100%"></div>
-            </div>
+          <div class="pet-name">Daisy</div>
+          <button class="select-btn">Select</button>
+        </div>
+        <div class="pet-option" data-pet="spike">
+          <div class="pet-img">
+            <img src="assets/spike/stage1a.png" alt="Spike" />
           </div>
+          <div class="pet-name">Spike</div>
+          <button class="select-btn">Select</button>
         </div>
-
-        <div class="pet-container">
-          <div class="speech-bubble" id="speechBubble"></div>
-          <div class="water-request" id="waterRequest">I'm thirsty!</div>
-          <div class="pet-game" id="petGame"></div>
-          <div class="watering-can" id="wateringCan">💧</div>
-        </div>
-
-        <div class="controls">
-          <button class="control-btn" id="feedBtn">Feed</button>
-          <button class="control-btn" id="playBtn">Play</button>
-        </div>
-
-        <div class="items-tray" id="feedTray">
-          <div class="close-tray" id="closeFeedTray">✕</div>
-          <div class="item food" data-item="fish">🐟</div>
-          <div class="item food" data-item="egg">🍳</div>
-          <div class="item food" data-item="candy">🍭</div>
-          <div class="item food" data-item="apple">🍎</div>
-          <div class="item food" data-item="bread">🥐</div>
-        </div>
-
-        <div class="items-tray" id="playTray">
-          <div class="close-tray" id="closePlayTray">✕</div>
-          <div class="item toy" data-item="balloon">🎈</div>
-          <div class="item toy" data-item="slinky">🪀</div>
-          <div class="item toy" data-item="paddleBall">🏓</div>
-          <div class="item toy" data-item="teddyBear">🧸</div>
-          <div class="item toy" data-item="musicBox">🎶</div>
-        </div>
-      </div>
-
-      <!-- Game Over Modal -->
-      <div class="modal-overlay" id="gameOverModal">
-        <div class="modal">
-          <h2 class="modal-title" id="modalTitle">You pet has died!</h2>
-          <div class="modal-buttons">
-            <button class="modal-btn keepPlaying-btn" id="keepPlayingBtn">Keep Playing</button>
-            <button class="modal-btn restart-btn" id="startOverBtn">Start Over</button>
+        <div class="pet-option" data-pet="lily">
+          <div class="pet-img">
+            <img src="assets/lily/stage1a.png" alt="Lily" />
           </div>
+          <div class="pet-name">Lily</div>
+          <button class="select-btn">Select</button>
         </div>
       </div>
     </div>
-    <script src="js/items.js"></script>
-    <script src="js/game.js"></script>
-  </body>
+
+    <!-- Game Screen -->
+    <div class="game-screen" id="gameScreen">
+      <div class="meters">
+        <div class="meter">
+          <div class="meter-label">
+            <span>Hunger meter</span>
+            <span id="hungerValue">100</span>
+          </div>
+          <div class="meter-bar">
+            <div class="meter-fill hunger-fill" id="hungerMeter" style="width: 100%"></div>
+          </div>
+        </div>
+        <div class="meter">
+          <div class="meter-label">
+            <span>Happiness meter</span>
+            <span id="happinessValue">100</span>
+          </div>
+          <div class="meter-bar">
+            <div class="meter-fill happiness-fill" id="happinessMeter" style="width: 100%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pet-container">
+        <div class="speech-bubble" id="speechBubble"></div>
+        <div class="water-request" id="waterRequest">I'm thirsty!</div>
+        <div class="pet-game" id="petGame"></div>
+        <div class="watering-can" id="wateringCan"><img src="assets/toy/water_can.png" alt="water_can" /></div>
+      </div>
+
+      <div class="controls">
+        <button class="control-btn" id="feedBtn">Feed</button>
+        <button class="control-btn" id="playBtn">Play</button>
+      </div>
+
+      <div class="items-tray" id="feedTray">
+        <div class="close-tray" id="closeFeedTray">✕</div>
+        <div class="item food" data-item="fish"><img src="assets/food/fish.png" alt="Fish" /></div>
+        <div class="item food" data-item="egg"><img src="assets/food/egg.png" alt="egg" /></div>
+        <div class="item food" data-item="candy"><img src="assets/food/candy.png" alt="candy" /></div>
+        <div class="item food" data-item="apple"><img src="assets/food/apple.png" alt="apple" /></div>
+        <div class="item food" data-item="bread"><img src="assets/food/bread.png" alt="bread" /></div>
+      </div>
+
+      <div class="items-tray" id="playTray">
+        <div class="close-tray" id="closePlayTray">✕</div>
+        <div class="item toy" data-item="balloon"><img src="assets/toy/balloon.png" alt="balloon" /></div>
+        <div class="item toy" data-item="slinky"><img src="assets/toy/slinky.png" alt="slinky" /></div>
+        <div class="item toy" data-item="paddleBall"><img src="assets/toy/paddleBall.png" alt="paddleBall" /></div>
+        <div class="item toy" data-item="teddyBear"><img src="assets/toy/teddy_bear.png" alt="teddyBear" /></div>
+        <div class="item toy" data-item="musicBox"><img src="assets/toy/music_box.png" alt="musicBox" /></div>
+      </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div class="modal-overlay" id="gameOverModal">
+      <div class="modal">
+        <h2 class="modal-title" id="modalTitle">You pet has died!</h2>
+        <div class="modal-buttons">
+          <button class="modal-btn keepPlaying-btn" id="keepPlayingBtn">Keep Playing</button>
+          <button class="modal-btn restart-btn" id="startOverBtn">Start Over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/items.js"></script>
+  <script src="js/game.js"></script>
+</body>
+
 </html>
