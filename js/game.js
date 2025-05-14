@@ -14,6 +14,9 @@ let gameState = {
   hasWon: false,
 };
 
+// Flag to check if event listeners are already set (avoids stacking)
+let areEventListenersSet = false;
+
 // DOM Elements
 const selectionScreen = document.getElementById("selectionScreen");
 const petOptions = document.querySelectorAll(".pet-option");
@@ -183,8 +186,8 @@ function evolvePet(newStage) {
   gameState.maxHappiness += 50;
 
   // Add some bonus to current values
-  gameState.hunger += 25;
-  gameState.happiness += 25;
+  gameState.hunger += 50;
+  gameState.happiness += 50;
 
   // Update pet appearance
   setTimeout(() => {
@@ -317,10 +320,16 @@ function startOver() {
   gameScreen.style.display = "none";
   selectionScreen.style.display = "flex";
   clearAllTimers();
+  resetMeters();
+
+  feedTray.style.display = "none";
+  playTray.style.display = "none";
 }
 
 // Setup all event listeners
 function setupEventListeners() {
+  if (areEventListenersSet) return;
+
   // Pet selection
   petOptions.forEach((option) => {
     const petId = option.getAttribute("data-pet");
@@ -366,6 +375,8 @@ function setupEventListeners() {
   // Game over modal buttons
   document.getElementById("keepPlayingBtn").addEventListener("click", keepPlaying);
   document.getElementById("startOverBtn").addEventListener("click", startOver);
+
+  areEventListenersSet = true;
 }
 
 // Setup click interactions for items

@@ -82,16 +82,14 @@ body {
 }
 
 .pet-img {
-  width: 150px;
-  height: 150px;
-  background-color: #ddd;
-  margin-bottom: 15px;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 24px;
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 48px;
-  color: #888;
 }
 
 .pet-name {
@@ -173,13 +171,11 @@ body {
 .pet-game {
   width: 200px;
   height: 200px;
-  background-color: #ddd;
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 60px;
-  color: #888;
   position: relative;
   z-index: 1;
 }
@@ -305,7 +301,7 @@ body {
 
 .speech-bubble {
   position: absolute;
-  top: -60px;
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
   background-color: white;
