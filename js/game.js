@@ -12,6 +12,7 @@ let gameState = {
   waterRequestActive: false,
   waterRequestTimer: null,
   hasWon: false,
+  isPaused: false,
 };
 
 // Flag to check if event listeners are already set (avoids stacking)
@@ -33,7 +34,7 @@ const feedTray = document.getElementById("feedTray");
 const playTray = document.getElementById("playTray");
 const closeFeedTray = document.getElementById("closeFeedTray");
 const closePlayTray = document.getElementById("closePlayTray");
-const gameOverModal = document.getElementById("gameOverModal");
+const pauseModal = document.getElementById("pauseModal");
 const modalTitle = document.getElementById("modalTitle");
 const speechBubble = document.getElementById("speechBubble");
 const waterRequest = document.getElementById("waterRequest");
@@ -142,14 +143,14 @@ function updateMeters() {
 // Decrease hunger over time
 function decreaseHunger() {
   if (!gameState.isAlive) return;
-  gameState.hunger -= 5;
+  gameState.hunger -= 10;
   updateMeters();
 }
 
 // Decrease happiness over time
 function decreaseHappiness() {
   if (!gameState.isAlive) return;
-  gameState.happiness -= 5;
+  gameState.happiness -= 10;
   updateMeters();
 }
 
@@ -276,9 +277,7 @@ function petDied() {
   // Show game over message
   setTimeout(() => {
     modalTitle.textContent = `${PETS[gameState.selectedPet].name} has died!`;
-    gameOverModal.style.display = "flex";
-    // Hide the keep playing button on game over
-    document.querySelector(".keepPlaying-btn").style.display = "none";
+    pauseModal.style.display = "flex";
   }, 1000);
 }
 
@@ -291,10 +290,10 @@ function winGame() {
 
   // Show win message
   setTimeout(() => {
-    modalTitle.textContent = "Your pet is all grown up! You Win! 🎉";
-    gameOverModal.style.display = "flex";
-    document.querySelector(".keepPlaying-btn").style.display = "block";
+    modalTitle.textContent = `Yay! ${PETS[gameState.selectedPet].name} is all grown up!`;
+    pauseModal.style.display = "flex";
   }, 5000);
+  document.getElementById("resumeBtn").style.display = "none";
 }
 
 // Clear all game timers
@@ -308,15 +307,44 @@ function clearAllTimers() {
     clearInterval(gameState.animationInterval);
   }
 }
+// Pause game
+function pauseGame() {
+  if (!gameState.isAlive || gameState.hasWon) return;
+
+  gameState.isPaused = true;
+  clearAllTimers();
+  modalTitle.textContent = "Game Paused";
+  pauseModal.style.display = "flex";
+  document.getElementById("resumeBtn").style.display = "block";
+}
 
 // Keep playing
-function keepPlaying() {
-  gameOverModal.style.display = "none";
+function resumeGame() {
+  if (!gameState.isPaused) return;
+
+  gameState.isPaused = false;
+  pauseModal.style.display = "none";
+
+  // Restart timers
+  hungerTimer = setInterval(decreaseHunger, 3000);
+  happinessTimer = setInterval(decreaseHappiness, 3000);
+  evolutionTimer = setInterval(checkEvolution, 5000);
+  waterRequestTimer = setInterval(requestWater, Math.random() * 15000 + 15000);
+
+  // Restart pet animation
+  const selected = gameState.selectedPet;
+  const stageName = `stage${gameState.stage}`;
+  gameState.animationInterval = setInterval(() => {
+    const currentStage = PETS[selected].stages[stageName];
+    const currentFrame = petGame.innerHTML.includes(currentStage[0]) ? 1 : 0;
+    petGame.innerHTML = `<img src="${currentStage[currentFrame]}" alt="${PETS[selected].name}">`;
+  }, 500);
 }
 
 // Start over
 function startOver() {
-  gameOverModal.style.display = "none";
+  gameState.isPaused = false;
+  pauseModal.style.display = "none";
   gameScreen.style.display = "none";
   selectionScreen.style.display = "flex";
   clearAllTimers();
@@ -372,8 +400,18 @@ function setupEventListeners() {
   // Setup click events for items
   setupItemClicks();
 
+  document.addEventListener("keydown", (e) => {
+    if (e.code === "Space" && gameScreen.style.display === "flex") {
+      e.preventDefault();
+      console.log("clicked"); // Prevent page scrolling
+      if (!gameState.isPaused) {
+        pauseGame();
+      }
+    }
+  });
+
   // Game over modal buttons
-  document.getElementById("keepPlayingBtn").addEventListener("click", keepPlaying);
+  document.getElementById("resumeBtn").addEventListener("click", resumeGame);
   document.getElementById("startOverBtn").addEventListener("click", startOver);
 
   areEventListenersSet = true;
