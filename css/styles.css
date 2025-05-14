@@ -12,6 +12,7 @@
     margin: 0;
     padding: 0;
     font-family: "Arial", sans-serif;
+    font-size: 24px;
 }
 
 body {
@@ -25,7 +26,7 @@ body {
 
 .container {
     width: 1080px;
-    height: 800px;
+    height: 840px;
     border: 2px solid #333;
     border-radius: 16px;
     overflow: hidden;
@@ -165,10 +166,10 @@ body {
 .pet-container {
     flex: 1;
     display: flex;
+    bottom: 134px;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin-bottom: 240px;
 }
 
 .pet-game {
@@ -186,8 +187,8 @@ body {
 }
 
 .pet-game img {
-    width: 115%;
-    height: 115%;
+    width: 105%;
+    height: 105%;
     object-fit: contain;
 }
 
@@ -256,15 +257,15 @@ body {
 
 .items-tray {
     position: absolute;
-    bottom: 70px;
+    bottom:100px;
     left: 50%;
     transform: translateX(-50%);
     background-color: #f0f0f0;
-    padding: 10px;
+    padding: 14px;
     border-radius: 8px;
     display: none;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 14px;
     width: auto;
     justify-content: center;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
@@ -272,23 +273,24 @@ body {
 
 .close-tray {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 20px;
-    height: 20px;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
     background-color: #ccc;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .item {
     width: 100px;
     height: 100px;
-    background-color: #ddd;
+    background-color: #cbcbcb;
+    padding: 8px;
     border-radius: 8px;
     display: flex;
     justify-content: center;
