@@ -83,10 +83,10 @@ body {
 }
 
 .pet-img {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     background-color: #ddd;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
     border-radius: 8px;
     display: flex;
     justify-content: center;
@@ -96,7 +96,7 @@ body {
 }
 
 .pet-name {
-    font-size: 18px;
+    font-size: 26px;
     margin-bottom: 10px;
 }
 
